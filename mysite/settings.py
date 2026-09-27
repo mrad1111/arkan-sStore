@@ -80,29 +80,21 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
 # ======================
-# DATABASE
+# DATABASE (MySQL Only)
 # ======================
-if os.environ.get('DB_ENGINE', 'mysql').lower() == 'sqlite':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('MYSQL_DATABASE', 'arkan_store'),
+        'USER': os.environ.get('MYSQL_USER', 'root'),
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD', ''),
+        'HOST': os.environ.get('MYSQL_HOST', '127.0.0.1'),
+        'PORT': os.environ.get('MYSQL_PORT', '3307'),
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+        },
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.environ.get('MYSQL_DATABASE', 'arkan_store'),
-            'USER': os.environ.get('MYSQL_USER', 'root'),
-            'PASSWORD': os.environ.get('MYSQL_PASSWORD', ''),
-            'HOST': os.environ.get('MYSQL_HOST', '127.0.0.1'),
-            'PORT': os.environ.get('MYSQL_PORT', '3307'),
-            'OPTIONS': {
-                'charset': 'utf8mb4',
-            },
-        }
-    }
+}
 
 
 

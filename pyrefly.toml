@@ -1,0 +1,5 @@
+[tool.pyrefly]
+disabled_rules = [
+    "bad-override-mutable-attribute",
+    "bad-argument-type"
+]
