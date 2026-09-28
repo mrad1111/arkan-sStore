@@ -387,7 +387,7 @@ def checkout(request):
             "shipping": shipping,
             "discount": discount,
             "grand_total": grand_total,
-            "coupon_code": coupon_code,
+            #"coupon_code": coupon_code,
             "cart_count": cart_count,
             "categories": categories,
         },
@@ -620,7 +620,7 @@ def send_otp_api(request):
             print(f"=== EMAIL OTP FOR {email}: {otp} ===")
             print(f"=== SMTP ERROR: {e} ===")
             print(f"=======================================================\n")
-            
+
             error_str = str(e)
             if "BadCredentials" in error_str or "535" in error_str:
                 err_msg = f"Failed to send email to {email}. Invalid Gmail App Password or Bad Credentials (535)."
@@ -688,4 +688,4 @@ def verify_otp_and_reset_password_api(request):
         })
 
     return JsonResponse({"success": False, "message": "Invalid request method."})
-
+

@@ -113,7 +113,6 @@ class CheckoutForm(forms.Form):
     )
     address = forms.CharField(widget=forms.Textarea(attrs={"class": "form-control", "rows": 3, "placeholder": "Street address"}))
     city = forms.CharField(max_length=100, widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "City"}))
-    zip_code = forms.CharField(max_length=20, widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "ZIP code"}))
     payment_method = forms.ChoiceField(
         choices=[("cod", "Cash on Delivery")],
         widget=forms.Select(attrs={"class": "form-select"})
